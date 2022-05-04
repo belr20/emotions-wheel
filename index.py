@@ -22,9 +22,9 @@ navbar = dbc.Navbar(dbc.Container([
             dbc.Col(dbc.NavbarBrand('Home', className='ml-2')),
         ], align='center'), href='/home'),
         dbc.NavbarToggler(id='navbar-toggler2'),
-        dbc.NavItem([dbc.NavLink('Datasets', href='/data')]),
-        dbc.NavItem([dbc.NavLink('Classifiers', href='/classification')]),
-        dbc.NavItem([dbc.NavLink('Prediction', href='/prediction')]),
+        dbc.NavItem([dbc.NavLink('DATA', href='/data')]),
+        dbc.NavItem([dbc.NavLink('CLASSIFICATION', href='/classification')]),
+        dbc.NavItem([dbc.NavLink('PREDICTION', href='/prediction')]),
         dbc.NavItem([dbc.NavLink(
             'GitHub Source Code',
             href='https://github.com/belr20/dev-ia-simplon/tree/main/RNCP34757E2/emotions-wheel')]),

@@ -12,17 +12,17 @@ layout = html.Div([
             className='mt-4'
         )]),
         dbc.Row([dbc.Col(html.H5(children='To do so, 3 dashboards are available :'), className='mt-4')]),
-        dbc.Row([dbc.Button('Datasets', href='/data', color='primary', className='mt-3')]),
+        dbc.Row([dbc.Button('DATASETS', href='/data', color='primary', className='mt-3')]),
         dbc.Row([dbc.Col(html.H5(
             children='Datasets analysis from Kaggle & Data World, our base for NLP.'),
             className='mt-4'
         )]),
-        dbc.Row([dbc.Button('Classifiers', href='/classification', color='primary', className='mt-3')]),
+        dbc.Row([dbc.Button('CLASSIFIERS', href='/classification', color='primary', className='mt-3')]),
         dbc.Row([dbc.Col(html.H5(
             children='Studies of different ML (Machine Learning) models to pick up the BEST one.'),
             className='mt-4'
         )]),
-        dbc.Row([dbc.Button('Prediction', href='prediction', color='primary', className='mt-3')]),
+        dbc.Row([dbc.Button('PREDICTION', href='prediction', color='primary', className='mt-3')]),
         dbc.Row([dbc.Col(html.H5(
             children='An API in which text can be entered for emotion detection.'),
             className='mt-4'
