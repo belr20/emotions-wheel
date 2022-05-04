@@ -5,6 +5,10 @@
 
 ---
 
+## Heroku
+
+* [emotions-wheel-by-belr20](https://emotions-wheel-by-belr20.herokuapp.com/)
+
 ## Resources
 
 * [Text Classification with NLTK and Scikit-Learn](https://bbengfort.github.io/tutorials/2016/05/19/text-classification-nltk-sckit-learn.html)  
