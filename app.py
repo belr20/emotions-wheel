@@ -17,4 +17,3 @@ app.config.suppress_callback_exceptions = True
 
 # nltk.download('stopwords')
 stopwords = nltk.corpus.stopwords.words('english')
-

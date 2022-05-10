@@ -4,7 +4,6 @@ import pandas as pd
 
 from app import app, stopwords
 
-import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
@@ -29,19 +28,28 @@ pipe_for_api.fit(X_train, y_train)
 
 layout = html.Div([
     dbc.Container([
-        dbc.Row([dbc.Col(html.H1(children='Prediction API'), className='mb-2 text-center')]),
-        dbc.Row([dbc.Col(
-            dcc.Input(id='user_input', type='text', placeholder='Enter text', debounce=True),
-            className='mb-1 text-center')
-        ]),
+        # dbc.Row([dbc.Col(html.H1(children='Prediction API'), className='mb-2 text-center')]),
         dbc.Row([dbc.Col(html.H2(id='output'), className='mb-4 text-center')]),
-        dbc.Row([dbc.Col(html.Img(src='/assets/wheel.png', height='500px'), className='mb-5 text-center')]),
-        dbc.Row([dbc.Col(html.H5(
-            children='Be aware that only ML AI (with a huge proportion of happyness emotion in the dataset) has \
-            been implemented for the moment ... Next step will be \
-            DL (Deep Learning) implementation for better prediction.'
+        html.Div([
+            dbc.Input(
+                id='user_input',
+                type='text',
+                placeholder='Enter text for emotion to predict ...',
+                size='lg',
+                className="mt-4 mb-4 text-center",
+                debounce=True
+            ),
+        ]),
+        dbc.Row([dbc.Col(html.P(
+            children='Be aware that only ML AI with a huge proportion of HAPPYNESS emotion in the dataset has \
+            been implemented for the moment.'
         ),
-            className='mt-4 text-center')]),
+            className='mt-4 mb-0 text-center')]),
+        dbc.Row([dbc.Col(html.P(
+            children='Next step would be DL (Deep Learning) implementation for better results.'
+        ),
+            className='mt-0 mb-2 text-center')]),
+        dbc.Row([dbc.Col(html.Img(src='/assets/wheel.png', height='500px'), className='mb-5 text-center')]),
     ])
 ])
 

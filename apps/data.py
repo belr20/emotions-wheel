@@ -23,7 +23,7 @@ fig1 = go.Figure(data=trace, layout=layout)
 
 # Figure 2 Data World emotions distribution
 trace = go.Histogram(x=df_world['sentiment'], xbins=dict(), marker=dict(color='#C40030'))
-layout = go.Layout(title='Data World')
+layout = go.Layout(title='data.World')
 fig2 = go.Figure(data=trace, layout=layout)
 fig2.update_layout(xaxis={'tickangle': -45})
 
@@ -52,7 +52,7 @@ ranks_world, freqs_world, words_world = words_distribution(x_world)
 fig4 = px.bar(x=ranks_world, y=freqs_world)
 fig4.update_traces(marker_color='#C40030', marker_line_color='black', marker_line_width=1.5)
 fig4.update_layout(
-    title='Data World',
+    title='data.World',
     yaxis={'title_text': ''},
     xaxis={'tickmode': 'array', 'title_text': '', 'tickangle': -45,
            'tickvals': ranks_world, 'ticktext': subsample(words_world),
@@ -61,7 +61,11 @@ fig4.update_layout(
 
 # Figure 5 Kaggle emotions repartition
 fig5 = go.Figure(
-    data=[go.Pie(values=df_kaggle.groupby('Emotion').Text.nunique(), textinfo='label+percent')],
+    data=[go.Pie(
+        labels=df_kaggle.Emotion.unique(),
+        values=df_kaggle.groupby('Emotion').Text.nunique(),
+        textinfo='label+percent')
+    ],
     layout={'title': 'Kaggle', 'font_color': 'grey'}
 )
 
@@ -72,7 +76,7 @@ fig6 = go.Figure(
         values=df_world.groupby('sentiment').content.nunique(),
         textinfo='label+percent'
     )],
-    layout={'title': 'Data World', 'font_color': 'grey'}
+    layout={'title': 'data.World', 'font_color': 'grey'}
 )
 
 # Tables
@@ -105,14 +109,14 @@ tab2_content = dash_table.DataTable(
 # Layout
 layout = html.Div([
     dbc.Container([
-        dbc.Row([dbc.Col(html.H1(children='Datasets'), className="mb-2")]),
+        dbc.Row([dbc.Col(html.H2(children='Datasets'), className="mb-2")]),
 
         dbc.Row([dbc.Tabs([
             dbc.Tab(tab1_content, label="Kaggle", label_style={"color": "#119DFF"}),
-            dbc.Tab(tab2_content, label="Data World", label_style={"color": "#C40030"}),
+            dbc.Tab(tab2_content, label="data.World", label_style={"color": "#C40030"}),
         ])]),
 
-        dbc.Row([dbc.Col(html.H1(children='Emotions distribution'), className="mb-2")]),
+        dbc.Row([dbc.Col(html.H2(children='Emotions distribution'), className="mb-2")]),
 
         dbc.Row([
             dbc.Col(dcc.Graph(id='graph-1', figure=fig1)),
@@ -123,7 +127,7 @@ layout = html.Div([
             dbc.Col(
                 html.H6(
                     children='We can observe that HAPPYNESS and SADNESS are very important in Kaggle dataset, \
-                    but in the middle for Data World in which NEUTRAL and WORRY are dominant. \
+                    but in the middle for data.World in which NEUTRAL and WORRY are dominant. \
                     Two emotions that do not exist in Kaggle data set. \
                     The two datasets are distributed so differently !'
                 ),
@@ -131,7 +135,7 @@ layout = html.Div([
             )
         ]),
 
-        dbc.Row([dbc.Col(html.H1(children='Emotions repartition'), className="mb-2")]),
+        dbc.Row([dbc.Col(html.H2(children='Emotions repartition'), className="mb-2")]),
 
         dbc.Row([
             dbc.Col(dcc.Graph(id='graph-5', figure=fig5), className="mb-4"),
@@ -145,9 +149,12 @@ layout = html.Div([
             className="mb-4"
         ),
 
-        dbc.Row([dbc.Col(html.H1(children='Words distribution'), className="mb-2")]),
-
-        dbc.Row([dbc.Col(html.P(children='(first 30ths + last 10ths)'))]),
+        dbc.Row(
+            [
+                dbc.Col(html.H2(children='Words distribution'), width=5, className="mb-2"),
+                dbc.Col(html.H5(children='(first 30ths + last 10ths)'), align='center', className="pl-0 ml-0")
+            ]
+        ),
 
         dbc.Row([
             dbc.Col(dcc.Graph(id='graph-3', figure=fig3), className="mb-2"),

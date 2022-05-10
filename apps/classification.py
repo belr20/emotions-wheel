@@ -44,9 +44,9 @@ table_logreg_results = dbc.Row([
         style_cell={'backgroundColor': 'rgb(50, 50, 50)', 'color': 'white', 'textAlign': 'left', 'padding-left': '5px'},
         css=[{'selector': '.row', 'rule': 'margin: 0'}]
     ),
-    html.H6(
+    html.H5(
         children='With a long execution time, STOPWORDS + NGRAM is the best vectorization for LOGISTIC REGRESSION.',
-        className="mt-4"
+        className="mt-4 text-center"
     )
 ])
 
@@ -60,10 +60,10 @@ table_sgd_results = dbc.Row([
         style_cell={'backgroundColor': 'rgb(50, 50, 50)', 'color': 'white', 'textAlign': 'left', 'padding-left': '5px'},
         css=[{'selector': '.row', 'rule': 'margin: 0'}]
     ),
-    html.H6(
+    html.H5(
         children='One more time, STOP-WORDS + NGRAM is the best vectorization for STOCHASTIC GRADIENT DESCENT model, \
          others are also quite good.',
-        className="mt-4"
+        className="mt-4 text-center"
     )
 ])
 
@@ -77,9 +77,9 @@ table_knn_results = dbc.Row([
         style_cell={'backgroundColor': 'rgb(50, 50, 50)', 'color': 'white', 'textAlign': 'left', 'padding-left': '5px'},
         css=[{'selector': '.row', 'rule': 'margin: 0'}]
     ),
-    html.H6(
+    html.H5(
         children='KNNeighbors is not suitable for NLP. Results are not good at all !',
-        className='mt-4'
+        className="mt-4 text-center"
     )
 ])
 
@@ -93,9 +93,10 @@ table_dtree_results = dbc.Row([
         style_cell={'backgroundColor': 'rgb(50, 50, 50)', 'color': 'white', 'textAlign': 'left', 'padding-left': '5px'},
         css=[{'selector': '.row', 'rule': 'margin: 0'}]
     ),
-    html.H6(
+    html.H5(
         children='Decision TREE has good scores, STOP-WORDS + NGRAM is one more time the best vectorization.',
-        className='mt-4')
+        className="mt-4 text-center"
+    )
 ])
 
 # Figure ROC curve
@@ -104,26 +105,24 @@ fig_roc_results = res_roc
 # Layout
 layout = html.Div([
     dbc.Container([
-        dbc.Row([dbc.Col(html.H1(children='Classification'), className='mb-2')]),
+        dbc.Row([dbc.Col(html.H2(children='Classifiers'), className='mb-2')]),
 
-        dbc.Row([dbc.Col(html.H6(
-            children='We will compare & analyze different ML models with different vectorization techniques \
-            for Kaggle dataset, which seems to be the best one.'),
-            className='mb-4'
+        dbc.Row([dbc.Col(html.H5(
+            children='Different ML models with different words vectorization techniques will be analyzed & compared\
+            for Kaggle dataset, the best one.'),
         )
         ]),
 
-        dbc.Row([dbc.Col(html.H6(
-            children='Different words vectorizations are performed to compare 4 machine learning classifiers : \
-                     LOGISTIC REGRESSION, STOCHASTIC GRADIENT DESCENT, KNNEIGHBORS, & DECISION TREE.'),
-            className='mb-4'
+        dbc.Row([dbc.Col(html.H5(
+            children='4 ML classifiers : LOGistic REGression, Stochastic Gradient Dexcent, \
+            KNNeighbors, & Decision TREE.'),
         )
         ]),
 
-        dbc.Row([dbc.Col(html.H6(
-            children='Legend : SW=STOP-WORDS, NG=N-GRAM, idf=TFIDF \
+        dbc.Row([dbc.Col(html.H5(
+            children='Legend : SW => STOP-WORDS, NG => N-GRAM, idf => TFIDF \
             (see GitHub link at top of this page for more information)'),
-            className='mb-2'
+            className='mb-4'
         )
         ]),
 
@@ -136,11 +135,12 @@ layout = html.Div([
             className='mb-4'
         ),
 
+        dbc.Row([dbc.Col(html.H2(children='Classification reports'), className="mt-4 mb-4")]),
         dbc.Row([
-            dbc.Col(html.H4(
-                children='With classification report, let\'s compare best vectorization of each classifier \
+            dbc.Col(html.H6(
+                children='Let\'s compare best vectorization of each classifier \
                 to determine the best one for Kaggle dataset'),
-                className="mt-4 mb-4"
+                className="mb-4"
             )
         ]),
 
@@ -158,7 +158,7 @@ layout = html.Div([
                     they are the most represented emotions in dataset.')],
                     className='mb-4'
                 )
-            ], className='mt-4 mb-4')
+            ], align='center', className='mt-4 mb-4')
         ]),
 
         dbc.Row([
@@ -173,26 +173,26 @@ layout = html.Div([
                 dbc.Row([html.H5(
                     children='LOGREG is quite well too, with DTREE and after comes KNN.')],
                     className='mb-4')
-            ], className='mt-4 mb-4'),
+            ], align='center', className='mt-4 mb-4'),
         ]),
 
         dbc.Row([
             dbc.Col([
-                dbc.Row([html.H4(children='Stochastic Gradient Descent ROC curve')], className='mb-4'),
+                dbc.Row([html.H2(children='ROC curve')], className='mb-4'),
                 dbc.Row([html.H5(
                     children='The Best Classifier is SGD with a F1 average at 0.9, \
-                and it is the fastest with 2,91 seconds.')],
+                and it is the fastest with 2.91 seconds.')],
                     className='mb-4'),
                 dbc.Row([html.H5(
                     children='With ROC curve, we can observe the true positives and false positives \
                 to evaluate its performance.')],
                     className='mb-4'),
                 dbc.Row([html.H5(children="We will use this model for our prediction API.")])
-            ]),
+            ], align='center'),
             dbc.Col(dcc.Graph(id='graph-21', figure=fig_roc_results)),
         ]),
 
-        dbc.Row([dbc.Col(html.H4(children='Data World scores'), className='mt-4 mb-4')]),
+        dbc.Row([dbc.Col(html.H2(children='data.World scores'), className='mt-4 mb-4')]),
 
         dbc.Row([
             dash_table.DataTable(
@@ -211,7 +211,7 @@ layout = html.Div([
                 },
                 css=[{'selector': '.row', 'rule': 'margin: 0'}]
             ),
-            html.H6(children='Scores with Data World dataset are really bad !', className='mt-4 mb-4'),
+            html.H5(children='Scores with data.World dataset are really bad !', className='mt-4 mb-4'),
         ]),
 
         dbc.Row([dbc.Col(html.H4(children='SGD classifier, with STOP-WORDS + N-GRAM vectorization, applied to \
