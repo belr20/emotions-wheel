@@ -20,12 +20,13 @@ df_world = pd.read_csv('data/text_emotion.csv')
 trace = go.Histogram(x=df_kaggle['Emotion'], xbins=dict(), marker=dict(color='#119DFF'))
 layout = go.Layout(title='Kaggle')
 fig1 = go.Figure(data=trace, layout=layout)
+fig1.update_layout(xaxis={'categoryorder': "total descending"})
 
 # Figure 2 Data World emotions distribution
 trace = go.Histogram(x=df_world['sentiment'], xbins=dict(), marker=dict(color='#C40030'))
 layout = go.Layout(title='data.World')
 fig2 = go.Figure(data=trace, layout=layout)
-fig2.update_layout(xaxis={'tickangle': -45})
+fig2.update_layout(xaxis={'tickangle': -45, 'categoryorder': "total descending"})
 
 # Figure 3 Kaggle words distribution
 x_kaggle = np.array(df_kaggle['Text'])
@@ -62,21 +63,21 @@ fig4.update_layout(
 # Figure 5 Kaggle emotions repartition
 fig5 = go.Figure(
     data=[go.Pie(
-        labels=df_kaggle.Emotion.unique(),
         values=df_kaggle.groupby('Emotion').Text.nunique(),
+        labels=df_kaggle.groupby('Emotion').Text.nunique().index,
         textinfo='label+percent')
     ],
-    layout={'title': 'Kaggle', 'font_color': 'grey'}
+    layout={'title': 'Kaggle', 'font_color': 'grey', 'showlegend': False}
 )
 
 # Figure 6 Data World emotions repartition
 fig6 = go.Figure(
     data=[go.Pie(
-        labels=df_world.sentiment.unique(),
         values=df_world.groupby('sentiment').content.nunique(),
+        labels=df_world.groupby('sentiment').content.nunique().index,
         textinfo='label+percent'
     )],
-    layout={'title': 'data.World', 'font_color': 'grey'}
+    layout={'title': 'data.World', 'font_color': 'grey', 'showlegend': False}
 )
 
 # Tables
