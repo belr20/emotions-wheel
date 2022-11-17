@@ -2,7 +2,7 @@
 ***by [BelR](https://github.com/belr20) with***  
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-3813/)
 
-<img alt="plot" height="500" src="./assets/wheel.png" width="500"/>
+<img alt="emotions-wheel" height="500" src="./assets/images/wheel.png" width="500"/>
 
 ---
 

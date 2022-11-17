@@ -14,7 +14,7 @@ from app import server
 from apps import data, classification, prediction, home
 
 
-SIMPLON_LOGO = "./assets/simplon-logo.png"
+SIMPLON_LOGO = "./assets/images/simplon-logo.png"
 server = app.server
 
 navbar = dbc.Navbar(
