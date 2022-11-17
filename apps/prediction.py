@@ -49,7 +49,7 @@ layout = html.Div([
             children='Next step would be DL (Deep Learning) implementation for better results.'
         ),
             className='mt-0 mb-2 text-center')]),
-        dbc.Row([dbc.Col(html.Img(src='/assets/wheel.png', height='500px'), className='mb-5 text-center')]),
+        dbc.Row([dbc.Col(html.Img(src='/assets/images/wheel.png', height='500px'), className='mb-5 text-center')]),
     ])
 ])
 
